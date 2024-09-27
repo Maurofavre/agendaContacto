@@ -52,14 +52,34 @@ namespace agendaContacto
         {
             string categoria = cmbCategoria.Text;
             int telefono = Convert.ToInt32(txtTelefono.Text);
-            
+
             //Enviar los datos escritos en la agenada para exportar
             exportarContancto.Grabar(txtNombre.Text, txtApellido.Text,
-            telefono,txtCorreo.Text, categoria );
+            telefono, txtCorreo.Text, categoria);
             MessageBox.Show("Datos listos para exportar");
 
             Limpiar();
         }
+        private void btnExportarTodos_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia de la clase ConexionDb
+            ConexionDb conexion = new ConexionDb();
+
+            // Obtener todos los contactos
+            List<Contactos> listaContactos = conexion.ObtenerTodosLosContactos();
+
+            // Crear una instancia de la clase archivContact para grabar los contactos
+            archivContact exportarContacto = new archivContact();
+
+            // Recorrer la lista de contactos y grabarlos en el archivo CSV
+            foreach (var contacto in listaContactos)
+            {
+                exportarContacto.Grabar(contacto.Nombre, contacto.Apellido, contacto.Telefono, contacto.Correo, contacto.Categoria);
+            }
+
+         
+        }
+
 
 
         //Guardamos datos para crear nuevos contactos
@@ -227,6 +247,28 @@ namespace agendaContacto
                 btnExportar.Enabled = false;
             }
         }
-        
+
+        private void exportarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exportarTodoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia de la clase ConexionDb
+            ConexionDb conexion = new ConexionDb();
+
+            // Obtener todos los contactos
+            List<Contactos> listaContactos = conexion.ObtenerTodosLosContactos();
+
+            // Crear una instancia de la clase archivContact para grabar los contactos
+            archivContact exportarContacto = new archivContact();
+
+            // Recorrer la lista de contactos y grabarlos en el archivo CSV
+            foreach (var contacto in listaContactos)
+            {
+                exportarContacto.GrabarTodos(contacto.Nombre, contacto.Apellido, contacto.Telefono, contacto.Correo, contacto.Categoria);
+            }
+        }
     }
 }

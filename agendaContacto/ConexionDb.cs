@@ -21,8 +21,10 @@ namespace agendaContacto
             private OleDbCommand comando = new OleDbCommand();
             //nos sirve para adaptar los datos que estan mal en la bd   
             private OleDbDataAdapter adaptador = new OleDbDataAdapter();
-            private string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Users\\mauro\\source\\repos\\agendaContactos\\agendaContacto\\agendaContacto\\dbAgenda\\AgendaDb11.accdb";
-            private string Tabla = "Contactos";
+        //private string cadenaConexion = "Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Users\\mauro\\source\\repos\\agendaContactos\\agendaContacto\\agendaContacto\\dbAgenda\\AgendaDb11.accdb";
+        private string cadenaConexion = @"Provider=Microsoft.ACE.OLEDB.16.0;Data Source=dbAgenda\AgendaDb11.accdb";
+
+        private string Tabla = "Contactos";
 
 
         //Conexion y Prueba de conexion 
@@ -59,9 +61,10 @@ namespace agendaContacto
                     }
                 }
             }
+        
 
         //Armado del TreeView
-            public void MostrarTree(TreeView treeView)
+             public void MostrarTree(TreeView treeView)
             {
                 try
                 {
@@ -197,8 +200,51 @@ namespace agendaContacto
                 }
             }
 
-     
-            public void Eliminar(Contactos contacto)
+
+        //recuperamos todos los datos de la agenda 
+        public List<Contactos> ObtenerTodosLosContactos()
+        {
+            List<Contactos> listaContactos = new List<Contactos>();
+            ConexionDb conexion = new ConexionDb();
+
+            try
+            {
+
+                conexion.conexiones();
+                conexion.comando.CommandText = "SELECT Nombre, Apellido, Telefono, Correo, Categoria FROM Contactos";
+                OleDbDataReader reader = conexion.comando.ExecuteReader();
+
+                //  se utiliza para avanzar al siguiente registro en el conjunto de resultados de una consulta SQL
+                // parte de la clase OleDbDataReader
+                while (reader.Read())
+                {
+                    Contactos contacto = new Contactos
+                    {
+                        Nombre = reader["Nombre"].ToString(),
+                        Apellido = reader["Apellido"].ToString(),
+                        Telefono = int.Parse(reader["Telefono"].ToString()),
+                        Correo = reader["Correo"].ToString(),
+                        Categoria = reader["Categoria"].ToString()
+                    };
+                    listaContactos.Add(contacto);
+                }
+
+                // Cierras el DataReader
+                reader.Close();
+
+
+                conexion.conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener contactos: " + ex.Message);
+            }
+            return listaContactos;
+        }
+
+
+
+        public void Eliminar(Contactos contacto)
             {
                 try
                 {

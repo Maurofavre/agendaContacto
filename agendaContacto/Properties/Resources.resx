@@ -124,6 +124,9 @@
   <data name="iconoSalida" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconoSalida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LapizHombreG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LapizHombreG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="lupaBuscar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lupaBuscar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,7 +148,7 @@
   <data name="guardarIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\guardarIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LapizHombreG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LapizHombreG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exporExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exporExcel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

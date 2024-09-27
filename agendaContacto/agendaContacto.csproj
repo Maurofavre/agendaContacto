@@ -111,6 +111,7 @@
     <Content Include="dbAgenda\AgendaDb11.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\exporExcel.png" />
     <None Include="Resources\LapizHombreG.png" />
     <None Include="Resources\lapizHombre.png" />
     <None Include="Resources\carnet.png" />
